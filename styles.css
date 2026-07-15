@@ -289,7 +289,7 @@ body {
   display: inline-block;
 }
 .team-head::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); bottom: -12px; width: 70px; height: 2px; background: var(--accent); }
-.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .team-card { background: var(--card); border: 1px solid var(--border-soft); border-radius: var(--radius); padding: 28px 22px; }
 .team-card h3 { font-family: var(--serif); color: var(--accent); font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
 .team-card p { color: var(--muted); font-size: 0.9rem; }
@@ -426,7 +426,7 @@ a.fc:hover .fc-ic { background: var(--accent-dim); }
   .services-art { max-width: 420px; margin: 0 auto; order: -1; }
   .threads-accent { display: none; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
-  .team-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
   .stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .plans { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; gap: 26px; }
@@ -434,6 +434,7 @@ a.fc:hover .fc-ic { background: var(--accent-dim); }
   .exp-num { border-right: 0; padding-right: 0; }
 }
 @media (max-width: 560px) {
+  .team-grid { grid-template-columns: 1fr; }
   .nav-card { grid-template-columns: auto auto 1fr; gap: 16px; padding: 18px 18px; }
   .nc-num { font-size: 1.4rem; padding-right: 14px; }
   .nc-ic { width: 52px; height: 52px; }
