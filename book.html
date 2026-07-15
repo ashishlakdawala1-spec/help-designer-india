@@ -1,0 +1,151 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book &amp; Pay — HELP Designer India</title>
+<meta name="description" content="Secure your consultancy spot with HelpDesignerIndia — share your details and complete your UPI payment to confirm your booking." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="book.css" />
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo" aria-label="Help Designer India home">
+      <span class="logo-main">HELP</span>
+      <span class="logo-sub">DESIGNER INDIA</span>
+    </a>
+    <a href="index.html#book" class="back-link">← Back to site</a>
+  </div>
+</header>
+
+<main class="pay-wrap">
+  <div class="container pay-layout">
+    <!-- LEFT: intro -->
+    <div class="pay-intro">
+      <p class="eyebrow accent">Fashion Consultancy &amp; Services</p>
+      <h1>Secure Your Spot<br /><span class="accent">Complete Your Payment</span></h1>
+      <p>Your payment confirms your registration. Scan the QR code or use the UPI ID below to make the payment, then share the screenshot to complete the process.</p>
+      <div class="plan-badge" id="planBadge">Complete your booking below</div>
+      <img class="pay-deco" src="assets/mannequin.png" alt="" aria-hidden="true" />
+    </div>
+
+    <!-- RIGHT: form + payment -->
+    <div class="pay-forms">
+      <!-- details -->
+      <form class="form-card" id="detailsForm" novalidate>
+        <h2 class="card-title">Share Your Details to Get Started</h2>
+        <div class="title-rule"></div>
+
+        <div class="field">
+          <span class="field-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+          <input type="text" name="name" placeholder="Your Name" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <span class="field-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <input type="email" name="email" placeholder="Email Address" autocomplete="email" />
+        </div>
+        <div class="field">
+          <span class="field-ic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 6a2 2 0 012-2z"/></svg></span>
+          <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <span class="field-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>
+          <select name="country" required>
+            <option value="" disabled selected>Country</option>
+            <option>India</option>
+            <option>United Arab Emirates</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Canada</option>
+            <option>Australia</option>
+            <option>Russia</option>
+            <option>Tanzania</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <span class="field-ic"><svg viewBox="0 0 24 24"><path d="M12 2C7 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-3-8-8-8z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <input type="text" name="city" placeholder="City" autocomplete="address-level2" />
+        </div>
+        <div class="field">
+          <span class="field-ic"><svg viewBox="0 0 24 24"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 016 0"/></svg></span>
+          <input type="text" name="brand" placeholder="Your Brand / Business Name" />
+        </div>
+        <div class="field area">
+          <span class="field-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></span>
+          <textarea name="requirement" placeholder="Tell us about your requirement..."></textarea>
+        </div>
+
+        <button type="button" class="btn btn-solid full" id="submitDetails">Submit Details →</button>
+      </form>
+
+      <!-- payment -->
+      <section class="pay-card" id="payCard">
+        <h2 class="card-title upper">Complete Your Payment</h2>
+        <div class="title-rule"></div>
+
+        <div class="pay-cols">
+          <div class="pay-scan">
+            <span class="pay-label">Scan to Pay (UPI)</span>
+            <div class="qr-box"><img src="assets/upi-qr.png" alt="UPI QR code to pay HelpDesignerIndia" /></div>
+            <span class="qr-sub">Scan with any UPI app</span>
+          </div>
+          <div class="pay-id">
+            <span class="pay-label">UPI ID</span>
+            <div class="upi-id" id="upiId">shitalfd1102@okaxis</div>
+            <div class="pay-btns">
+              <button type="button" class="btn btn-outline" id="copyUpi">⧉ Copy UPI ID</button>
+              <a class="btn btn-solid" id="upiPay" href="#" rel="noopener">Pay <span id="payAmt">via UPI app</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay-or"><span>OR</span></div>
+
+        <label class="upload">
+          <span>Upload Payment Screenshot</span>
+          <input type="file" id="screenshot" accept="image/*" />
+        </label>
+
+        <button type="button" class="btn btn-solid full complete-btn" id="completeReg">Complete Registration →</button>
+        <p class="secure">🔒 Payments go directly through your secure UPI app.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- CTA band -->
+  <div class="cta-band">
+    <div class="container cta-inner">
+      <span class="cta-hd">HD</span>
+      <div class="cta-text">
+        <strong>Ready to Build, Grow &amp; Scale Your Fashion Brand?</strong>
+        <span>Take the next step with expert guidance and the right strategy.</span>
+      </div>
+      <a href="index.html#book" class="btn btn-solid">Book Your Call Today →</a>
+    </div>
+  </div>
+
+  <!-- mini footer -->
+  <footer class="pay-footer">
+    <div class="container">
+      <a class="pf" href="index.html">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+        helpdesignerindia.com
+      </a>
+      <a class="pf" href="https://instagram.com/helpdesignerindia" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        @helpdesignerindia
+      </a>
+      <a class="pf" href="https://wa.me/919537656086" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20 4L3 11l6 2 2 6 3-4 4 3z"/></svg>
+        +91 95376 56086
+      </a>
+    </div>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="book.js"></script>
