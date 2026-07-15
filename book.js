@@ -119,27 +119,34 @@ $('submitDetails').addEventListener('click', () => {
 });
 
 // ===== Complete registration -> WhatsApp (with screenshot if possible) =====
-$('completeReg').addEventListener('click', async () => {
+function openWhatsApp(url) {
+  const w = window.open(url, '_blank');
+  if (!w) window.location.href = url; // fallback if the new tab was blocked
+}
+
+$('completeReg').addEventListener('click', () => {
   if (!validate()) return;
 
-  // Save to email/dashboard first — this happens regardless of whether the
-  // person goes on to finish the WhatsApp step, so the booking is never lost.
-  await saveByEmail('payment made');
-
   const text = buildMessage();
+  const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
 
-  // If a screenshot is attached and the device can share files, use the native
-  // share sheet so the image + details go to WhatsApp together.
+  // Save to email/dashboard in the background. NOT awaited — awaiting here would
+  // break the click "user gesture" and let the popup blocker kill WhatsApp.
+  saveByEmail('payment made');
+
+  // If a screenshot is attached and the device supports file sharing, open the
+  // native share sheet (image + details together). Called synchronously so the
+  // gesture is preserved; falls back to the WhatsApp link on error.
   if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-    try {
-      await navigator.share({ files: [file], text, title: 'HelpDesignerIndia booking' });
-      return;
-    } catch (e) {
-      if (e && e.name === 'AbortError') return; // user cancelled
-      // otherwise fall through to WhatsApp link
-    }
+    navigator
+      .share({ files: [file], text, title: 'HelpDesignerIndia booking' })
+      .catch((e) => {
+        if (e && e.name === 'AbortError') return; // user cancelled the share sheet
+        openWhatsApp(waUrl);
+      });
+    return;
   }
 
-  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, '_blank');
+  openWhatsApp(waUrl);
   if (file) toast('Opening WhatsApp — please attach your screenshot there');
 });
