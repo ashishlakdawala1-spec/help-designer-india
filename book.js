@@ -73,7 +73,7 @@ function validate() {
 
 // Save the submission to email + Web3Forms dashboard. Returns true on success,
 // false if no key is configured or the request fails. Never throws.
-async function saveByEmail(stage) {
+async function saveByEmail(stage, opts) {
   if (!ACCESS_KEY || ACCESS_KEY.startsWith('REPLACE_WITH')) return false;
   const d = collect();
   const fd = new FormData();
@@ -88,7 +88,11 @@ async function saveByEmail(stage) {
   fd.append('botcheck', '');
   if (file) fd.append('Payment screenshot', file);
   try {
-    const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
+    const r = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: fd,
+      keepalive: !!(opts && opts.keepalive),
+    });
     return r.ok;
   } catch {
     return false;
@@ -119,34 +123,30 @@ $('submitDetails').addEventListener('click', () => {
 });
 
 // ===== Complete registration -> WhatsApp (with screenshot if possible) =====
-function openWhatsApp(url) {
-  const w = window.open(url, '_blank');
-  if (!w) window.location.href = url; // fallback if the new tab was blocked
-}
-
 $('completeReg').addEventListener('click', () => {
   if (!validate()) return;
 
   const text = buildMessage();
   const waUrl = `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
 
-  // Save to email/dashboard in the background. NOT awaited — awaiting here would
-  // break the click "user gesture" and let the popup blocker kill WhatsApp.
-  saveByEmail('payment made');
-
-  // If a screenshot is attached and the device supports file sharing, open the
-  // native share sheet (image + details together). Called synchronously so the
-  // gesture is preserved; falls back to the WhatsApp link on error.
+  // With a screenshot on a device that supports file sharing, open the native
+  // share sheet (image + details together). share() must be called synchronously
+  // in the click, so nothing is awaited before it. The page stays open, so the
+  // background email save completes normally.
   if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+    saveByEmail('payment made');
     navigator
       .share({ files: [file], text, title: 'HelpDesignerIndia booking' })
       .catch((e) => {
-        if (e && e.name === 'AbortError') return; // user cancelled the share sheet
-        openWhatsApp(waUrl);
+        if (e && e.name === 'AbortError') return; // user closed the share sheet
+        window.location.href = waUrl; // fall back to the WhatsApp link
       });
     return;
   }
 
-  openWhatsApp(waUrl);
-  if (file) toast('Opening WhatsApp — please attach your screenshot there');
+  // Otherwise hand off straight to WhatsApp. Same-tab navigation is the most
+  // reliable way to open the WhatsApp app on mobile (window.open often opens a
+  // dead blank tab). keepalive lets the email save finish as the page unloads.
+  saveByEmail('payment made', { keepalive: true });
+  window.location.href = waUrl;
 });
