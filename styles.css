@@ -8,8 +8,8 @@
   --border: rgba(224, 122, 95, 0.22);
   --border-soft: rgba(255, 255, 255, 0.07);
   --text: #ece7e4;
-  --muted: #a99f9a;
-  --muted-2: #837873;
+  --muted: #b8afaa;
+  --muted-2: #978c86;
   --accent: #e07a5f;
   --accent-strong: #d15a45;
   --accent-dim: rgba(224, 122, 95, 0.10);
@@ -27,9 +27,10 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-weight: 300;
+  /* 400, not 300: Montserrat Light renders thin and smeary as light-on-dark,
+     especially on standard-density (non-Retina) monitors. */
+  font-weight: 400;
   line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
@@ -98,12 +99,14 @@ body {
   color: var(--text);
 }
 .logo-sub {
-  font-size: 0.56rem;
-  letter-spacing: 0.42em;
+  /* was 0.56rem/300 (~9px) — too small and thin to render cleanly */
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   color: var(--accent);
   margin-top: 3px;
   border-top: 1px solid var(--border);
-  padding-top: 3px;
+  padding-top: 4px;
 }
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a {
@@ -153,7 +156,7 @@ body {
 .nc-ic { width: 66px; height: 66px; border-radius: 50%; background: var(--accent-strong); display: grid; place-items: center; flex: 0 0 auto; }
 .nc-ic svg { width: 32px; height: 32px; fill: none; stroke: #fff; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .nc-body strong { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.5rem; color: var(--text); margin-bottom: 5px; }
-.nc-body span { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.nc-body span { color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
 .nc-arrow { color: var(--accent); font-size: 1.7rem; line-height: 1; transition: transform 0.22s ease; }
 .nav-card:hover .nc-arrow { transform: translateX(5px); }
 
