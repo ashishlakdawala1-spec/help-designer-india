@@ -1,0 +1,42 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank You — HELP Designer India</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .ty-wrap { min-height: 78vh; display: grid; place-items: center; text-align: center; padding: 60px 22px; }
+  .ty-card { max-width: 560px; }
+  .ty-check { width: 84px; height: 84px; border-radius: 50%; border: 2px solid var(--accent); display: grid; place-items: center; margin: 0 auto 26px; }
+  .ty-check svg { width: 40px; height: 40px; stroke: var(--accent); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .ty-card h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.05; margin-bottom: 16px; }
+  .ty-card h1 .accent { color: var(--accent); }
+  .ty-card p { color: var(--muted); font-size: 1.02rem; max-width: 44ch; margin: 0 auto 28px; }
+  .ty-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+</style>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo" aria-label="Help Designer India home">
+      <span class="logo-main">HELP</span>
+      <span class="logo-sub">DESIGNER INDIA</span>
+    </a>
+    <a href="index.html" class="back-link" style="color:var(--muted);text-decoration:none;font-size:.9rem;">← Back to site</a>
+  </div>
+</header>
+
+<main class="ty-wrap">
+  <div class="ty-card">
+    <div class="ty-check" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" /></svg>
+    </div>
+    <h1>Booking <span class="accent">Received!</span></h1>
+    <p>Thank you — we've got your details and payment screenshot. Our team will review it and confirm your consultancy slot shortly.</p>
+    <div class="ty-actions">
+      <a class="btn btn-solid" href="https://wa.me/919537656086?text=Hi%2C%20I%27ve%20completed%20my%20booking%20and%20payment.%20Looking%20forward%20to%20confirming%20my%20consultancy%20slot." target="_blank" rel="noopener">Message us on WhatsApp</a>
+      <a class="btn btn-outline" href="index.html">Back to Home</a>
+    </div>
+  </div>
+</main>

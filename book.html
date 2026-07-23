@@ -26,15 +26,22 @@
     <div class="pay-intro">
       <p class="eyebrow accent">Fashion Consultancy &amp; Services</p>
       <h1>Secure Your Spot<br /><span class="accent">Complete Your Payment</span></h1>
-      <p>Your payment confirms your registration. Scan the QR code or use the UPI ID below to make the payment, then share the screenshot to complete the process.</p>
+      <p>Your payment confirms your registration. Scan the QR code or use the UPI ID below to make the payment, then upload the screenshot and tap Complete Registration — it reaches us automatically.</p>
       <div class="plan-badge" id="planBadge">Complete your booking below</div>
       <img class="pay-deco" src="assets/mannequin.png" alt="" aria-hidden="true" />
     </div>
 
     <!-- RIGHT: form + payment -->
-    <div class="pay-forms">
+    <form class="pay-forms" id="bookingForm" method="POST" enctype="multipart/form-data" action="https://formsubmit.co/shitalfd1102@gmail.com" novalidate>
+      <!-- FormSubmit config: emails the booking + screenshot to the business automatically -->
+      <input type="hidden" name="_subject" value="New booking — HelpDesignerIndia" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://ashishlakdawala1-spec.github.io/help-designer-india/thankyou.html" />
+      <input type="hidden" name="Plan" id="planField" value="" />
+
       <!-- details -->
-      <form class="form-card" id="detailsForm" novalidate>
+      <div class="form-card">
         <h2 class="card-title">Share Your Details to Get Started</h2>
         <div class="title-rule"></div>
 
@@ -79,7 +86,7 @@
         </div>
 
         <button type="button" class="btn btn-solid full" id="submitDetails">Submit Details →</button>
-      </form>
+      </div>
 
       <!-- payment -->
       <section class="pay-card" id="payCard">
@@ -106,13 +113,13 @@
 
         <label class="upload">
           <span>Upload Payment Screenshot</span>
-          <input type="file" id="screenshot" accept="image/*" />
+          <input type="file" id="screenshot" name="attachment" accept="image/*" />
         </label>
 
-        <button type="button" class="btn btn-solid full complete-btn" id="completeReg">Complete Registration →</button>
-        <p class="secure">🔒 Payments go directly through your secure UPI app.</p>
+        <button type="submit" class="btn btn-solid full complete-btn" id="completeReg">Complete Registration →</button>
+        <p class="secure">🔒 Your details &amp; screenshot are sent securely to our team.</p>
       </section>
-    </div>
+    </form>
   </div>
 
   <!-- CTA band -->
@@ -148,4 +155,4 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="book.js?v=3"></script>
+<script src="book.js?v=4"></script>
