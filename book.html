@@ -32,12 +32,11 @@
     </div>
 
     <!-- RIGHT: form + payment -->
-    <form class="pay-forms" id="bookingForm" method="POST" enctype="multipart/form-data" action="https://formsubmit.co/shitalfd1102@gmail.com" novalidate>
-      <!-- FormSubmit config: emails the booking + screenshot to the business automatically -->
+    <form class="pay-forms" id="bookingForm" method="POST" enctype="multipart/form-data" action="https://formsubmit.co/shitalfd1102@gmail.com" target="fs_frame" novalidate>
+      <!-- FormSubmit config: emails the booking + screenshot to the business inbox -->
       <input type="hidden" name="_subject" value="New booking — HelpDesignerIndia" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://ashishlakdawala1-spec.github.io/help-designer-india/thankyou.html" />
       <input type="hidden" name="Plan" id="planField" value="" />
 
       <!-- details -->
@@ -117,7 +116,7 @@
         </label>
 
         <button type="submit" class="btn btn-solid full complete-btn" id="completeReg">Complete Registration →</button>
-        <p class="secure">🔒 Your details &amp; screenshot are sent securely to our team.</p>
+        <p class="secure">🔒 Your details &amp; screenshot are sent to our team automatically. WhatsApp will also open — please <strong>attach your payment screenshot there too</strong>.</p>
       </section>
     </form>
   </div>
@@ -153,6 +152,7 @@
   </footer>
 </main>
 
+<iframe name="fs_frame" id="fsFrame" title="submission" style="display:none;width:0;height:0;border:0;"></iframe>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="book.js?v=4"></script>
+<script src="book.js?v=5"></script>
