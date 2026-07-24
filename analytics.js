@@ -8,7 +8,7 @@
    ============================================================ */
 (function () {
   // ===== 1) PASTE YOUR IDS HERE =====
-  var GA_ID = 'G-XXXXXXXXXX';          // Google Analytics 4 Measurement ID (looks like G-ABC123XYZ)
+  var GA_ID = 'G-60PR52M7YK';          // Google Analytics 4 Measurement ID (looks like G-ABC123XYZ)
   var CLARITY_ID = 'CLARITY_ID_HERE';  // Microsoft Clarity Project ID (short alphanumeric code)
   // ==================================
 
